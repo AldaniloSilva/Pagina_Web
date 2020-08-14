@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--Indica que é um html5-->
+<html lang="pt-br">
+    <!--O idioma do código-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTT.APP Note</title>
+    <style>
+        body {font-family: Verdana, sans-serif;}
+        
+
+    </style>
+
+    <script>
+        function addText() {
+            var tagInputNote = document.getElementById("inputNote")
+            var tagP = document.getElementById("tagParagrafo")
+            
+            //console.log("Aula de Linguagem de Programação 3");
+            console.log(tagInputNote.value);
+
+            //Vai jogar no paragráfo o texto do inputNote
+            tagP.innerHTML = tagInputNote.value;
+
+
+            //Vai criar uma lista de elementos
+            var tagLi = document.createElement("li");
+            tagLi.innerHTML = tagInputNote.value;
+            tagList.appendChild(tagLi);
+
+
+            var TagInputColor = document.getElementById("inputColor");
+            console.log(tagInputNote.value, TagInputColor.value);
+
+        }
+
+        function setSkullSize(){
+            var tagSlider = document.getElementById("skullSize");
+            var tagDiv = document.getElementById("skullIcon")
+            console.log(tagSlider.value);
+            tagDiv.style.fontSize = tagSlider.value + "px";
+            
+        }
+
+
+    </script>
+</head>
+
+
+
+<body>
+    <h1>FTT.APP Note</h1>
+
+    <p>
+        <input type="text" id="inputNote">
+        <input type="color" id="inputColor">
+        <button onclick="addText();">Salva</button>
+    </p>
+
+    <input onchange="setSkullSize();" type="range" min="30" max="300" value="100" class="slider" id="skullSize">
+    <div class="icon" id="skullIcon">☠</div>
+
+    <hr>
+
+    <p id="tagParagrafo">
+               
+    </p>
+
+    <hr>
+
+<ul id="tagList">
+</ul>
+
+
+
+    <!--Coloca uma linha na página-->
+
+<!--
+Emmet: 
+#page>div.logo+ul#navigation>li*5>a{Item $} -->
+
+<pre>
+    <!--Tudo que tiver aqui dentro não será alterado-->
+    #page>div.logo+ul#navigation>li*5>a{Item $}
+</pre>
+
+
+
+    <div id="page">
+        <div class="logo"></div>
+        <ul id="navigation">
+            <li><a href="">Item 1</a></li>
+            <li><a href="">Item 2</a></li>
+            <li><a href="">Item 3</a></li>
+            <li><a href="">Item 4</a></li>
+            <li><a href="">Item 5</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>
+
+<!--
+
+Applicação vanilla - HTML5, CSS3, JavaScript 6 (ECMAScript 6)
+
+Emmet: 
+#page>div.logo+ul#navigation>li*5>a{Item $}
+
+-- Todo
+-- Agenda
+-- Cadastro
+
+
+-->
