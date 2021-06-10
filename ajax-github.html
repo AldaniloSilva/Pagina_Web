@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+function ssearch(){
+    var searchText = document.getElementById("searchText");
+    var preTag = document.getElementById("preTag");
+            
+     //String template
+    var apiURL=`https://api.github.com/users/${searchText.value}/repos`;
+
+    console.log("Buscando...");
+    
+    console.log(searchText.value);
+
+    //AJAX
+    fetch(apiURL, {mode:'cors'})
+    .then(function(response){
+        return response.text();
+    })
+    .then(function(text){
+        console.log('Request sucessful', text);
+        preTag.innerHTML = text;
+    })
+    .catch(function(error){
+        log('Request failed', error)
+
+    });
+    }
+</script>
+<body>
+    <input id="inputSearch" type="search" id="searchText" required>
+    <!-- required: Se o usuário não fornecer informação ele vai avisar-->
+    <!--<input id="submitButton" onclick="ssearch();" type="submit">-->
+    <button onclick="ssearch();">Search</button>
+
+    <hr>
+    <pre id="preTag"></pre>
+</body>
+</html>

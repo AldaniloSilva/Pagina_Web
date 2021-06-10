@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+
+        <title>API-Animais</title>
+
+    <script>
+    function setImage(msg,valor) {
+    console.log(msg); //Só para debug!!
+    document.getElementById("Image").src = msg[valor];
+    }
+
+
+
+        function getImageInfo(){
+            var select = document.getElementById('animal');
+            var value = select.options[select.selectedIndex].value;
+
+            if(value === "dog"){
+                fetch("https://dog.ceo/api/breeds/image/random") //WEB API -  HTTP
+                .then(request => request.text()) //Retorna o objeto request
+                .then(data => setImage(JSON.parse(data),"message")) //Obtem os dados e transforma em JSON
+
+            }
+
+            if(value === "cat"){
+                fetch("https://aws.random.cat/meow") //WEB API -  HTTP
+                .then(request => request.text()) //Retorna o objeto request
+                .then(data => setImage(JSON.parse(data),"file")) //Obtem os dados e transforma em JSON
+            }
+
+            if(value === "fox"){
+                fetch("https://randomfox.ca/floof/") //WEB API -  HTTP
+                .then(request => request.text()) //Retorna o objeto request
+                .then(data => setImage(JSON.parse(data),"image")) //Obtem os dados e transforma em JSON
+}
+            }
+
+    </script>
+    </head>
+    <body>
+        
+        <h1>Teste de API com Imagens de Animais</h1>
+        <p>Escolha um animal para mostrar fotos: 
+        <select id="animal">
+            <option value="dog" selected>Cachorro</option>
+            <option value="cat">Gato</option>
+            <option value="fox">Raposa</option>
+        </select>
+    </p>
+
+        <button onclick="getImageInfo();">Clique aqui!</button>
+        <hr>
+        <img id="Image" alt="Animals image..."></img>
+
+
+
+        
+    </body>
+</html>
